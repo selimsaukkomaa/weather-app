@@ -6,13 +6,14 @@ const forecast = (latitude, longitude, callback) => {
         const currentTemp = body.current.temperature
         const feelsTemp = body.current.feelslike
         const description = body.current.weather_descriptions[0]
+        const uvIndex = body.current.uv_index
 
     if (error) {
         callback('Unable to connect to weather service!', undefined)
     } else if (body.error) {
         callback('Unable to find location!', undefined)
     } else {
-        callback(undefined, description + '. It is currently ' + currentTemp + ' degrees out. It feels like ' + feelsTemp + ' degrees out.')
+        callback(undefined, description + '. It is currently ' + currentTemp + ' degrees out. It feels like ' + feelsTemp + ' degrees out. The UV index is ' + uvIndex + '.')
     }
 
     })
